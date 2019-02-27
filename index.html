@@ -1,6 +1,31 @@
 <html>
-<body>
-<h1>Hello AWS</h1>
-<p>Welcome, you are in for a treat</p>
+<head>
+<title> HELLO WORLD.. </title>
+
+<script type="text/javascript">
+
+function display_c()
+{
+  var refresh=10000;   // Refreshes in 10 seconds
+  mytime=setTimeout('display_ct()',refresh)
+}
+
+const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+
+function display_ct()
+{
+  var x = new Date();
+  var h =  x.getHours(), m = x.getMinutes(),  sec = x.getSeconds();
+  var _time = (h > 12) ? (h-12 + ':' + m + ':' + sec +' PM') : (h + ':' + m + ':' + sec +' AM');
+  var x1 = "Hello World - The time is " + _time  + " ON " + x.getDate() + "-" + monthNames[x.getMonth()] + "-" + x.getFullYear();
+  document.getElementById('ct').innerHTML = x1;
+  display_c();
+}
+
+</script>
+</head>
+<body onload=display_ct();>
+<span id='ct' ></span>
+
 </body>
 </html>
