@@ -1,0 +1,23 @@
+AWSCLI Commands for reference:
+
+Stop Instance: aws ec2 stop-instances --instant-ids $(aws ec2 descibe-instances --filters "Name=instance-state-name,Values=pending,running,stopped,stopping") --query "Reservations[].Instances[].[instanceId] --output text | tr ' ' ' '
+
+Start Instance : aws ec2 start-instances --instant-ids $(aws ec2 descibe-instances --filters "Name=instance-state-name,Values=pending,running,stopped,stopping") --query "Reservations[].Instances[].[instanceId] --output text | tr ' ' ' '
+
+Terminating Instance : aws ec2 terminate-instances --instance-ids $(aws ec2 describe-instances --filters "Name=instance-state-name,Values=pending,running,stopped,stopping" --query "Reservations[].Instances[].[InstanceId]" --output text | tr '\n' ' ')
+
+Creating Security Groups: aws ec2 create-security-group --group-name {grpname} --description "Security Group for EC2 instances to allow port 22"
+                          aws ec2 authorize-security-group-ingress --group-name {grpname} --protocol tcp --port 80 --cidr 0.0.0.0/0
+                          aws ec2 authorize-security-group-ingress --group-name {grpname} --protocol all --port 0-65535 --cidr 0.0.0.0/0
+	
+
+Create Group, Users, Access Keys : aws iam create-group --group-name {grpname}	
+                                   aws iam create-user --user-name {usrname}
+						           aws iam create-access-key --user-name {usrname}
+								   aws iam add-user-to-group --user-name {usrname}
+
+Attaching Policy : aws iam attach-group-policy --policy-arn arn:aws:iam::aws:policy/AmazonEC2FullAccess --group-name {grpname}								   
+
+Creating topic in SNS: aws sns create-topic --name aws-topic
+                       aws sns subscribe --topic-arn arn:aws:sns:ap-south-1:750675586393:aws-topic --protocol email --notification-endpoint {email}
+                       aws sns list-subscriptions --output text
