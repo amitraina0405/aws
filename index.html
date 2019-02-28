@@ -2,31 +2,27 @@
 <html>
 <head>
 <title> Welcome to my Zone </title>
-
-<script type="text/javascript">
-
-function display_c()
+<script type = "text/javascript">
+function show_c()
 {
-  var ref_time=10000;   // Refreshes in 10 seconds
-  current_time=setTimeout('display_ct()',ref_time)
+ var ref_time=10000; //Do a refresh in 10 seconds
+ current_time=setTimeout('show_ct()',ref_time)
 }
+const month_names = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-const month_names = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
-
-function display_ct()
+function show_ct()
 {
-  var t = new Date();
-  var z =  t.getHours(), m = t.getMinutes(),  sec = t.getSeconds();
-  var _time = (h > 12) ? (h-12 + ':' + m + ':' + sec +' PM') : (h + ':' + m + ':' + sec +' AM');
-  var hw = "Hello World - The time is " + _time  + " ON " + t.getDate() + "-" + monthNames[t.getMonth()] + "-" + t.getFullYear();
-  document.getElementById('ct').innerHTML = hw;
-  display_c();
+ var t = new Date();
+ var z = t.getHours(), m= t.getMinutes(), sec = t.getSeconds();
+ var_time = (h > 12)? (h-12 + ':' + m + ":" + sec + 'PM'): (h + ":" + m + ":" +sec + 'AM');
+ var hw = "Hello World - The time is " + _time + " ON " + t.getDate() + "-" + monthNames[t.getMonth()] + "-" + t.getFullYear();
+ document.getElementById('ct').innerHTML = hw;
+ show_c();
 }
-
 </script>
 </head>
-<body onload=display_ct();>
-<span id='ct' ></span>
+<body onload=show_ct();>
+<span id = "ct"></span>
 
 </body>
 </html>
