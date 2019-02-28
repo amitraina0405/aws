@@ -1,24 +1,25 @@
+# Time Zone
 <html>
 <head>
-<title> HELLO WORLD.. </title>
+<title> Welcome to my Zone </title>
 
 <script type="text/javascript">
 
 function display_c()
 {
-  var refresh=10000;   // Refreshes in 10 seconds
-  mytime=setTimeout('display_ct()',refresh)
+  var ref_time=10000;   // Refreshes in 10 seconds
+  current_time=setTimeout('display_ct()',ref_time)
 }
 
-const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+const month_names = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
 
 function display_ct()
 {
-  var x = new Date();
-  var h =  x.getHours(), m = x.getMinutes(),  sec = x.getSeconds();
+  var t = new Date();
+  var z =  t.getHours(), m = t.getMinutes(),  sec = t.getSeconds();
   var _time = (h > 12) ? (h-12 + ':' + m + ':' + sec +' PM') : (h + ':' + m + ':' + sec +' AM');
-  var x1 = "Hello World - The time is " + _time  + " ON " + x.getDate() + "-" + monthNames[x.getMonth()] + "-" + x.getFullYear();
-  document.getElementById('ct').innerHTML = x1;
+  var hw = "Hello World - The time is " + _time  + " ON " + t.getDate() + "-" + monthNames[t.getMonth()] + "-" + t.getFullYear();
+  document.getElementById('ct').innerHTML = hw;
   display_c();
 }
 
