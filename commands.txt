@@ -1,5 +1,9 @@
 AWSCLI Commands for reference:
 
+Creating KeyPair:
+
+aws ec2 create-key-pair --key-name keypair1 --query 'xoriant_key' --output > keypair1
+
 Stop Instance: aws ec2 stop-instances --instant-ids $(aws ec2 descibe-instances --filters "Name=instance-state-name,Values=pending,running,stopped,stopping") --query "Reservations[].Instances[].[instanceId] --output text | tr ' ' ' '
 
 Start Instance : aws ec2 start-instances --instant-ids $(aws ec2 descibe-instances --filters "Name=instance-state-name,Values=pending,running,stopped,stopping") --query "Reservations[].Instances[].[instanceId] --output text | tr ' ' ' '
