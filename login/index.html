@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title> Welcome2myZone </title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+      <style type="text/css">
+        html { height: 100% }
+        body { height: 100%; margin: 0; padding: 0 }
+        #map-canvas { height: 100% }
+    </style>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuP_BOi6lD7L6ZY7JTXRdhY1YEj_gcEP0&sensor=false">
+    </script>
+    <script type="text/javascript">
+       function initialize() {
+          var mapOptions = {
+             center: new google.maps.LatLng(-34.397, 150.644),
+             zoom: 1
+          };
+          var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+          }
+	   function display_c() {
+	      var refresh=10000;   // Refreshes in 10 seconds
+          mytime=setTimeout('display_ct()',refresh)
+          }
+       const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+       function display_ct() {
+	      var x = new Date();
+          var h =  x.getHours(), m = x.getMinutes(),  sec = x.getSeconds();
+          var _time = (h > 12) ? (h-12 + ':' + m + ':' + sec +' PM') : (h + ':' + m + ':' + sec +' AM');
+          var x1 = "Hello World - The time is " + _time  + " ON " + x.getDate() + "-" + monthNames[x.getMonth()] + "-" + x.getFullYear();
+          document.getElementById('ct').innerHTML = x1;
+          display_c();
+          }
+		  
+       google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </head>
+  <body bgcolor="yellow"></body>
+  <marquee direction="right">
+  <center>
+  <body onload=display_ct();>
+  <span id='ct' ></span>
+  </marquee>
+ </body>
+ </center>
+  <body>
+   <div id="map-canvas"/>
+  </body>
+</html>
