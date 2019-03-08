@@ -1,0 +1,11 @@
+sudo apt-get install python3
+sudo pip3 install flask
+sudo pip3 install boto3
+sudo mkdir templates
+sudo mkdir templates/login
+sudo wget -q https://raw.githubusercontent.com/raina0405/aws/master/templates/index.html -O templates/index.html
+sudo wget -q https://raw.githubusercontent.com/raina0405/aws/master/script/serve.py -O serve.py
+sudo wget -q https://raw.githubusercontent.com/raina0405/aws/master/login/login.html -O templates/login/login.html
+sudo python3 serve.py &
+sudo sed 's/scripts-user/[scripts-user, always]/g'  /etc/cloud/cloud.cfg > /etc/cloud/cloud.cfg-bak
+sudo mv /etc/cloud/cloud.cfg-bak /etc/cloud/cloud.cfg
