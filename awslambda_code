@@ -1,5 +1,32 @@
+#Lambda code for converting string to uppercase
 import json
 
 def lambda_handler(event, context):
     message = event['key'].upper()
     return message
+
+
+##########-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#######
+
+#lambda code for image rekognition
+import json
+import boto3
+
+def lambda_handler(event, context):
+    # TODO implement
+
+    bucket = event['key1']
+    photo = event['key2']
+    ##return bucket, photo
+    
+    client=boto3.client('rekognition')
+    
+    response = client.detect_labels(Image={'S3Object':{'Bucket':bucket,'Name':photo}},
+        MaxLabels=2)
+
+    print('Detected labels for ' + photo) 
+    print()   
+    for label in response['Labels']:
+        print ("Label: " + label['Name'])
+        print ("Confidence: " + str(label['Confidence']))
+    return response['Labels']
