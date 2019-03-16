@@ -46,12 +46,32 @@ APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 @app.route('/image')
 def index():
-    return '''<form method=POST enctype=multipart/form-data action="upload">
-    <p>Welcom to my Zone<br><br><br><br>
-    <p>Please select the file you would like to upload. <br><br>
-    <input type=file name=myfile> <br><br>
-    <input type="submit" value="Upload File">
-    </form>'''
+     return '''<form method=POST enctype=multipart/form-data action="upload">
+     <p>WELCOME TO MY ZONE <br><br><br><br>
+     <p>Select the file to Upload <br><br>
+     <input type=file name=myfile> <br><br>
+     <input type="submit" value="Upload File">
+     </form><style>
+body {
+    -webkit-animation: colorchange 60s infinite;
+    animation: colorchange 60s infinite;
+}
+@-webkit-keyframes colorchange {
+     0%  {background: #33FFF3;}
+    25%  {background: #78281F;}
+    50%  {background: #117A65;}
+    75%  {background: #DC7633;}
+    100% {background: #9B59B6;}
+}
+@keyframes colorchange {
+     0%  {background: #33FFF3;}
+    25%  {background: #78281F;}
+    50%  {background: #117A65;}
+    75%  {background: #DC7633;}
+    100% {background: #9B59B6;}
+}
+</style>
+</body>'''
 
 @app.route('/upload', methods=['POST'])
 def upload():
@@ -69,6 +89,5 @@ def upload():
     output= json.loads(response['Payload'].read().decode('utf-8'))
     result = {'return_str':output}
     return render_template('uploadimage.html', result=result)
-
 
 app.run(host='0.0.0.0', port=8888, debug=True)
